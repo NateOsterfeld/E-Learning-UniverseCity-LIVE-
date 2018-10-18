@@ -1,0 +1,20 @@
+﻿@model Course
+
+
+<div class="col-12 col-sm-12 col-md-6">
+    <div class="card hoverable">
+        <div class="card-header">
+            <h2>@Model.CourseName</h2>
+        </div>
+        <div class="card-body">
+            <div class="md-form">
+                Description: @Model.Description
+            </div>
+            <div class="md-form">
+                Difficulty: @Model.Difficulty
+            </div>
+            <a href="/Home/DashboardStudent/@Model.CourseId" class="btn btn-primary btn-md btn-block">Enroll Now</a>
+        </div>
+    </div>
+</div>
+

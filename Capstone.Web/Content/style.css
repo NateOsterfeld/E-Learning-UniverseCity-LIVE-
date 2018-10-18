@@ -1,0 +1,211 @@
+﻿html {
+    color: white;
+}
+
+body {
+    color: #fff !important;
+}
+
+.black-text {
+    color: #000 !important;
+}
+
+.display-4 {
+    color: white !important;
+    text-shadow: 0px 0px 10px #000;
+}
+
+.lead {
+    color: white;
+    text-shadow: 0px 0px 10px #000;
+}
+
+.display-4.page {
+    color: black;
+    text-shadow: 0px 0px 0px #000
+}
+
+.error-msg{
+    color:red;
+}
+
+.md-form label {
+    color: #dddddd !important;
+}
+
+.md-form label.active {
+    color: #9664FF !important;
+    font-size: 22px !important;
+    opacity: .3;
+    transform: translateY(-100%) !important;
+}
+
+.view .mask {
+    overflow: auto !important;
+}
+
+.login {
+    background: linear-gradient(40deg,#5ed1fc,#3647b3) !important;
+}
+
+.register {
+    background: linear-gradient(40deg,#3647b3,#5ed1fc) !important;
+}
+
+.page-top {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+h1.tagline {
+    font-size: 30px;
+}
+
+button.btn {
+    margin-bottom: 10px !important;
+}
+
+.indigo {
+    background-color: #fff !important;
+}
+
+button > h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0px !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+textarea.form-control {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 2.3rem 0 1.55rem !important;
+}
+
+button, select {
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+}
+
+.badge-info {
+    background-color: #33b5e5 !important;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.video-frame {
+    width: 100%;
+    height: 195px;
+    border: 4px solid #dc3545;
+    box-shadow: 1px 2px 3px #dc3545;
+    border-radius: 3px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #dc3545;
+    color: white;
+    box-shadow: 1px 2px 4px #dc3545;
+}
+
+
+
+
+
+/* Required for full background image */
+/*html,
+body,
+header,
+.view {
+    background-image: url('/Content/wallhaven-680299.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+}*/
+body {
+    background-image: url('/Content/wallhaven-680299.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment:fixed;
+    height: auto;
+}
+
+@media (max-width: 740px) {
+    html,
+    body,
+    header,
+    .view {
+        height: 1000px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    html,
+    body,
+    header,
+    .view {
+        height: 650px;
+    }
+}
+
+.top-nav-collapse {
+    background-color: #222222 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+    background-color: rgba(42, 48, 44, 0.6) !important;
+}
+
+@media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #222222 !important;
+    }
+}
+
+.rgba-gradient {
+    background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+    background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
+    background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+}
+
+.card {
+    background-color: rgba(42, 48, 44, 0.6) !important;
+}
+
+.md-form label {
+    color: #ffffff;
+}
+
+h6 {
+    line-height: 1.7;
+}
+
+.checked {
+    color: #ffd900;
+}
+
+
+.error {
+    color: red;
+    /*background:url(Red_x.png) no-repeat 0px 0px;
+    background-size: 15px;
+    padding-left:15px;
+    margin-left: 5px;*/ /*uncomment when ready */
+}
+
+.valid {
+    color: green;
+}
+
+.field-validation-error{
+    color: red;
+}

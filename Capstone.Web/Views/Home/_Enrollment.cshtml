@@ -1,0 +1,196 @@
+﻿@model EnrollmentViewModel
+
+
+<link rel="stylesheet" href="~/Content/style.css" />
+<link rel="stylesheet" href="~/Content/custom.css" />
+<link rel="stylesheet" href="~/Content/normalize.css" />
+<link rel="stylesheet" href="~/Content/skeleton.css" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="hero">
+    <div class="container">
+        <div class="row">
+            <div class="six columns">
+                <div class="hero-content">
+                    <h2 class="hero-top-message">Learn Something Today</h2>
+                    <p class="hero-bottom-message">Your passion is waiting!</p>
+                    <form action="/Home/SearchCourses" id="search-course" method="post" class="form">
+                        <input class="u-full-width" type="text" name="search" placeholder="What Do You Want To Learn? " id="search-course">
+                        <input type="submit" id="submit-search-course" class="submit-search-course">
+                    </form>
+                    <a href="~/Home/Dashboard" class="u-full-width button-primary button input add-to-cart" data-id="1">My Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-bar">
+    <div class="container">
+        <div class="row">
+            <div class="four columns icon icon1">
+                <p>
+                    20,000 online courses <br>
+                    Adopt new hobbies
+                </p>
+            </div>
+            <div class="four columns icon icon2">
+                <p>
+                    Expert Instructors<br>
+                    Master in-demand skills
+                </p>
+            </div>
+            <div class="four columns icon icon3">
+                <p>
+                    Lifetime access <br>
+                    Learn at your own pace
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="courses-list" class="container">
+    <h1 id="heading" class="heading">Available Courses</h1>
+    <p style="text-align:center">Click images to view course details!</p>
+    <div class="row">
+        @{ int i = 0;}
+        @{if (Model.Courses.Count == 0)
+            {
+                <p>No courses found</p>
+            }
+            else
+            {
+                int b = 20;
+                var distinctList = Model.Courses.Distinct().ToList();
+                if (distinctList[0].Image != null)
+                {
+                    int modal = 0;
+                    foreach (var item in distinctList)
+                    {
+                        modal++;
+                        string modalString = "modal" + modal.ToString();
+
+                        <div class="col-md-4">
+                            <div class="new-card">
+
+
+
+                                <img src="@Url.Content(item.Image.FilePath)" class="course-image u-full-width" style="cursor:pointer" data-toggle="modal" data-target="#@{@modalString}">
+                                <div class="info-card">
+                                    <h4 class="course-name">@item.CourseName.ToUpper()</h4>
+                                    @{ string teacher = "";}
+                                    @foreach (var user in Model.Users)
+                                    {
+
+                                        if (item.TeacherId == user.UserId)
+                                        {
+                                            teacher = user.FirstName + user.LastName;
+                                        }
+
+                                    }
+                                    <p class="course-author">by @teacher</p>
+                                    <p>
+                                        @if (item.CourseRating > 0 && item.CourseRating < 1.5)
+                                        {
+                                            @*<h4>@item.CourseRating Stars</h4>*@
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        @if (item.CourseRating > 1.5 && item.CourseRating < 2.5)
+                                        {
+                                            @*<h4>@item.CourseRating Stars</h4>*@
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        @if (item.CourseRating > 2.5 && item.CourseRating < 3.5)
+                                        {
+                                            @*<h4>@item.CourseRating Stars</h4>*@
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        @if (item.CourseRating > 3.5 && item.CourseRating < 4.5)
+                                        {
+                                            @*<h4>@item.CourseRating Stars</h4>*@
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        @if (item.CourseRating > 4.5 && item.CourseRating <= 5)
+                                        {
+                                            @*<h4>@item.CourseRating Stars</h4>*@
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        }
+                                    </p>
+                                    <p class="price">
+                                        @if (item.Difficulty == 1)
+                                        {
+                                            <span style="color:greenyellow">Beginner</span>
+                                        }
+                                        else if (item.Difficulty == 2)
+                                        {
+                                            <span style="color:green">Easy</span>
+                                        }
+                                        else if (item.Difficulty == 3)
+                                        {
+                                            <span style="color:orange">Intermediate</span>
+                                        }
+                                        else if (item.Difficulty == 4)
+                                        {
+                                            <span style="color:orangered">Difficult</span>
+                                        }
+                                        else
+                                        {
+                                            <span style="color:red">Expert</span>
+                                        }  
+                                        <span class="u-pull-right">$@item.CostUSD</span>
+                                    </p>
+                                    @Html.ActionLink("Enroll Now", "addCourseToStudent", "Home", new { courseId = item.CourseId }, new { @class = "u-full-width button-primary button input add-to-cart" })
+                                </div>
+                                <!--.card-->
+                                <div class="modal fade" id="@{@modalString}" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">@item.CourseName</h4>
+                                            </div>
+                                            <p class="modal-teacher">by @teacher</p>
+                                            <div class="modal-body">
+                                                <p>@item.Description</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+            }
+        }
+
+
+    </div>
+</div>

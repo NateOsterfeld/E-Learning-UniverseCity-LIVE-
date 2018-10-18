@@ -1,0 +1,51 @@
+﻿@model Capstone.Web.CreateCourseViewModel
+@{ 
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="col-12 col-sm-12 col-md-6 fadeInRight animated">
+    <div class="card hoverable createCourseCard">
+        <div class="card-header text-center">
+            <h2>Create a Course</h2>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("NewCourse", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="md-form">
+                    @Html.LabelFor(m => m.Name, "Course Name")
+                    @Html.TextBoxFor(m => m.Name, null, new { @class = "white-text form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.Name, null, new { @class = "error-msg" })
+                </div>
+
+                <div class="md-form">
+                    @Html.LabelFor(m => m.Description, "Course Description")
+                    @Html.TextAreaFor(m => m.Description, new { @class = "white-text form-control", placeholder = "", maxlength = "8000" })
+                    @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-msg" })
+                </div>
+
+                <div class="md-form">
+                    @Html.LabelFor(m => m.Cost, "Course Cost")
+                    @Html.TextBoxFor(m => m.Cost, null, new { @class = "white-text form-control", @placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.Cost, null, new { @class = "error-msg" })
+                </div>
+
+                <div class="md-form">
+                    @Html.DropDownListFor(m => m.DifficultyLevel, new SelectList(Enum.GetValues(typeof(Difficulty))), "Select Difficulty...", new { @class = "browser-default custom-select mb-4 pointer", @placeholder = "Select Difficulty Level" })
+                    @Html.ValidationMessageFor(m => m.DifficultyLevel, null, new { @class = "error-msg" })
+                </div>
+                <div class="md-form">
+                    <p>Upload a picture</p>
+                    <input type="file" name="postedFile" />
+                </div>
+
+
+                <button type="submit" value="Save" class="btn btn-info btn-block hoverable login">Create Course</button>
+
+            }
+        </div>
+    </div>
+</div>
+
+   
+
+

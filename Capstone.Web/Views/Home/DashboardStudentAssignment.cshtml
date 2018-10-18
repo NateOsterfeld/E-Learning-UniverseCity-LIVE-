@@ -1,0 +1,109 @@
+﻿@using System.Linq;
+@model AssignmentDashBoardViewModel
+
+
+<link rel="stylesheet" href="~/Content/style.css" />
+<link rel="stylesheet" href="~/Content/custom.css" />
+<link rel="stylesheet" href="~/Content/skeleton.css" />
+<link rel="stylesheet" href="~/Content/normalize.css" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="hero-teacher">
+    <div class="container">
+        <div class="row">
+            <div class="six columns">
+                <div class="hero-content">
+                    <h2 class="hero-top-message">@Model.Course.CourseName</h2>
+                    <p class="hero-bottom-message">by @Model.User.FirstName @Model.User.LastName</p>
+                    <form action="/Home/SearchCourses" id="search-course" method="post" class="form">
+                        <input class="u-full-width" type="text" name="search" placeholder="What Do You Want To Learn? " id="search-course">
+                        <input type="submit" id="submit-search-course" class="submit-search-course">
+                    </form>
+                    <a href="~/Home/Dashboard" class="u-full-width button-primary button input add-to-cart" data-id="1">My Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-bar">
+    <div class="container">
+        <div class="row">
+            <div class="four columns icon icon1">
+                <p>
+                    20,000 online courses <br>
+                    Adopt new hobbies
+                </p>
+            </div>
+            <div class="four columns icon icon2">
+                <p>
+                    Expert Instructors<br>
+                    Master in-demand skills
+                </p>
+            </div>
+            <div class="four columns icon icon3">
+                <p>
+                    Lifetime access <br>
+                    Learn at your own pace
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card-header text-center">
+    <h2 class="course-assignments">Course Assignments</h2>
+</div>
+<div class="card-body">
+
+    @{if (Model.Assignments.Count == 0)
+        {
+            <p>There are no assignments for this course yet.</p>
+        }
+        else
+        {
+            foreach (var item in Model.AssignmentsWithVideo)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title panel-edit">
+                            <a data-toggle="collapse" href="#collapse@{@item.AssignmentId}">@item.AssignmentName</a>
+                        </h4>
+                    </div>
+                    <div id="collapse@{@item.AssignmentId}" class="panel-collapse collapse">
+                        <p class="assignment-instructions">@item.Instructions</p>
+                        <video class="assignment-video" style="width:100%; height:auto;" controls>
+                            <source src="@Url.Content(item.Video.FilePath)" type="video/mp4" draggable="true" />
+                        </video>
+                    </div>
+
+                </div>
+            }
+
+            Assignment[] assignmentsWithout = Model.Assignments.ToArray();
+            Assignment[] assignmentsWith = Model.AssignmentsWithVideo.ToArray();
+            List<Assignment> result = Model.PrintAll(assignmentsWithout, assignmentsWith);
+            //var distinctList = Model.Assignments.Distinct().ToList();
+            var distinctList = Model.Assignments.Distinct().ToList();
+            foreach (var item in result)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-edit">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse@{@item.AssignmentId}">@item.AssignmentName</a>
+                        </h4>
+                    </div>
+                    <div id="collapse@{@item.AssignmentId}" class="panel-collapse collapse">
+                        <p class="assignment-instructions">@item.Instructions</p>
+                    </div>
+                </div>
+            }
+
+
+        }
+    }
+</div>
+
+

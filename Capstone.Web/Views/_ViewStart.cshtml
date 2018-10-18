@@ -1,0 +1,21 @@
+﻿
+
+@{
+
+    User user = (User)Session["User"];
+    if(user != null)
+    {
+        if(user.RoleId == 1) // student
+        {
+            Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+        }
+        else // teacher
+        {
+            Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+        }
+    }
+    else // no one is logged in
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}

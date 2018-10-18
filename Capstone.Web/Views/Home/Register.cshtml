@@ -1,0 +1,57 @@
+﻿@model List<SelectListItem>
+@{
+    ViewBag.Title = "UniverseCity - Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+    //Html.EnableClientValidation(false);
+}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<div class="page-top">
+    <div class="row">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">                                              
+
+                <div class="card wow fadeInDown animated hoverable" data-wow-delay="0.3s">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h3 class="white-text">
+                                Register a New Account
+                            </h3>
+                        </div>
+
+                        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { id = "registrationId" }))
+                        {
+                        <div ng-app="" class="md-form">
+                            @Html.Label("First Name", new { @class = "form2" })
+                            <input class="white-text form-control" type="text" ng-model="name" name="FirstName">                         
+                        </div>
+                            <div class="md-form">
+                                @Html.Label("Last Name", new { @class = "form2" })
+                                @Html.TextBox("LastName", "", new { placeHolder = "", @class = "white-text form-control" })
+                            </div>
+                            <div class="md-form">
+                                @Html.Label("Email", new { @class = "form2" })
+                                @Html.TextBox("Email", "", new { placeHolder = "", @class = "white-text form-control" })
+                            </div>
+                            <div class="md-form">
+                                @Html.Label("Password", new { @class = "form2" })
+                                @Html.Password("Password", "", new { placeHolder = "", @class = "white-text form-control" })
+                            </div>
+                            <div class="md-form">
+                                @Html.Label("Confirm Password", new { @class = "form2" })
+                                @Html.Password("ConfirmPassword", "", new { placeHolder = "", @class = "white-text form-control" })
+                            </div>
+                            <div class="md-form">
+                                @Html.DropDownList("RoleId", Model, "Select Role...", new { placeHolder = "", @class = "browser-default custom-select mb-4" })
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block login hoverable">Create User</button>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-sm-2"></div>
+            </div>
+     </div>
+</div>

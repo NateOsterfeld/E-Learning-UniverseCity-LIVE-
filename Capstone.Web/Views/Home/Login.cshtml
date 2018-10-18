@@ -1,0 +1,52 @@
+﻿@model Capstone.Web.LoginViewModel
+@{
+    ViewBag.Title = "UniverseCity - Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+}
+
+
+<div class="page-top">
+    <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div class="card wow fadeInRight hoverable" data-wow-delay="0.3s">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3 class="white-text">
+                            Login
+                        </h3>
+                    </div>
+
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "loginId" }))
+                    {
+                        <div class="md-form">
+                            <label class="form2" for="Email">Email:</label>
+                            @Html.TextBox("Email", "", new { @class = "white-text form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                            @Html.ValidationMessage("invalid-user")
+                        </div>
+
+                        <div class="md-form">
+                            @Html.Label("Password", new { @class = "form4" })
+                            @Html.Password("Password", "", new { @class = "white-text form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                            @Html.ValidationMessage("invalid-password")
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-info btn-block hoverable login">Login</button>
+                        </div>                     
+                    }
+                        <div class="text-center mt-4">
+                            <button onclick="location.href=`/Home/Register`" type="button" class="btn btn-info btn-block hoverable login">Register</button>
+                        </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+</div>

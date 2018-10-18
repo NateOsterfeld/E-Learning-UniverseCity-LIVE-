@@ -1,0 +1,71 @@
+﻿@model List<Course>
+
+@{
+    /**/
+
+    ViewBag.Title = "UniverseCity";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<!--Grid row-->
+<div class="row mt-5 animated fadeIn">
+    <!--Grid column-->
+    <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left fadeInLeft animated">
+        <h1 class="h1-responsive font-weight-bold wow tagline text-center" data-wow-delay="0.3s">Learning doesn't end on Earth.</h1>
+        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+        <span class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">
+            <h1 class="text-center">Learn.</h1>
+            <h1 class="text-center">Grow.</h1>
+            <h1 class="text-center">Explore.</h1>
+        </span>
+
+    </div>
+
+    <div class="col-md-6 col-xl-5 mb-4">
+
+
+        <div class="card wow fadeInRight animated hoverable" data-wow-delay="0.3s">
+            <div class="card-body">
+
+
+                <div class="text-center">
+                    <h3 class="white-text">
+                        Login
+                    </h3>
+
+                </div>
+
+
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "loginId" }))
+                {
+                    <div class="md-form">
+                        @Html.Label("Email", new { @class = "form2" })
+                        @Html.TextBox("Email", "", new { @class = "white-text form-control", placeholder = "" })
+
+                    </div>
+
+                    <div class="md-form">
+                        @Html.Label("Password", new { @class = "form4" })
+                        @Html.Password("Password", "", new { @class = "white-text form-control", placeholder = "" })
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <button type="submit" class="btn btn-info btn-block hoverable login">Login</button>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <a href="~/Home/Register" class="btn btn-info btn-block hoverable register">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+</div>

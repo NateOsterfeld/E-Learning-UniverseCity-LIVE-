@@ -1,0 +1,42 @@
+﻿@model CreateAssignmentViewModel
+@{ 
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="col-12 col-sm-12 col-md-6 fadeInRight animated">
+    <div class="card hoverable createCourseCard">
+        <div class="card-header text-center">
+            <h2>Create an assignment</h2>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("NewAssignment", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                <div class="md-form">
+                    @Html.LabelFor(m => m.AssignmentName, "Name", new { @class = "assignment-name" })
+                    @Html.TextBoxFor(m => m.AssignmentName, null, new { @class = "white-text form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.AssignmentName, null, new { @class = "error-msg" })
+                </div>
+
+                <div class="md-form">
+                    @Html.LabelFor(m => m.Instructions, "Instructions", new { @class = "assignment-instructions" })
+                    @Html.TextAreaFor(m => m.Instructions, new { @class = "white-text form-control", placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.Instructions, null, new { @class = "error-msg" })
+                </div>
+                <div class="md-form">
+                    <p class="upload-video">Upload a video</p>
+                    <input type="file" name="postedFile" />
+                </div>
+
+                <input name="courseId" type="hidden" value="@{@Session[Model.CurrentCourseIdKey]} " />
+
+                <button type="submit" value="Save" class="btn btn-info btn-block hoverable login assignment-button">Create Assignment</button>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
