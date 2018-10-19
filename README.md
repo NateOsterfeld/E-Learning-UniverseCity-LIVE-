@@ -1,0 +1,5 @@
+# E-Learning-UniverseCity-LIVE-
+See LIVE DEMO here: http://universecity.apphb.com/  An E-learning platform for students and teachers alike! This multi-demographic web app allows users to either design and create their own educational courses to share with the world, or participate in learning and taking courses that have already been created by others, depending on their selected role as a student or teacher. Courses can be found through a search or organized by categories, as well as recommended via reviews and ratings.
+
+
+Disclaimer: Because each time an image or video file is submitted, it updates the path in the project, this means that deployment on appharbor requires a git push with the most updated version. So it will work perfectly on your local machine, and is otherwise functional online, but adding courses and assignments to the static instance will not return files from the database. This is also because the free Sql Server Express add-on only accepts 10mb as well. So either way I was unfortunately out of luck. I guess that's why they call it a demo! Anyway, I hope you like it :)
