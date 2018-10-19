@@ -186,14 +186,17 @@ ul {
     transition: all .5s;
 }
 
-.new-card:hover {
-    box-shadow: 0 2rem 6rem rgba(0,0,0,.7);
-}
 
 @media (min-width: 550px) {
     .new-card {
         text-align: left;
         margin-bottom: 25px;
+    }
+
+    .new-card:hover {
+    box-shadow: 0 2rem 6rem rgba(0,0,0,.7);
+    /*transform: scale(1.03);*/
+    border: 3px solid mediumpurple;
     }
 }
 
